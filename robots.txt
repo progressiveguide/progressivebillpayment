@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://utilitybillhelp.github.io/sitemap.xml
+Sitemap: https://progressiveguide.github.io/progressivebillpayment/sitemap.xml
