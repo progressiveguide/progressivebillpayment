@@ -1,0 +1,11 @@
+/* TEAM */
+Publisher: billinfo-desk
+Role: Informational Publisher
+
+/* SITE */
+Purpose: Insurance & utility bill payment guidance
+Hosting: GitHub Pages
+Region: Global
+
+/* LAST UPDATED */
+January 2026
