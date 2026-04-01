@@ -1,4 +1,4 @@
-# Insurance Bill Pay Help – Progressive & Utilities
+# Insurance Bill Pay Help – Progressive Insurance 
 
 This repository hosts informational pages designed to help users understand
 insurance and utility bill payment options, including how to pay, where to pay,
@@ -27,4 +27,4 @@ authorized company channels.
 https://utilitybillhelp.github.io/
 
 ## Last Updated
-January 2026
+April 2026
