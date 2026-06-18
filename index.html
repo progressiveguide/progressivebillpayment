@@ -140,30 +140,46 @@
       font-weight: 600;
       color: #0b4ea2;
       font-size: 15px;
+      overflow-x: auto;
     }
     
-    /* Table */
+    /* Table - Mobile Responsive */
+    .table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 20px 0;
+    }
+    
     table {
       width: 100%;
       border-collapse: collapse;
-      margin: 20px 0;
       font-size: 14px;
+      display: table;
     }
     
     th {
       background: #0b4ea2;
       color: white;
-      padding: 12px;
+      padding: 12px 8px;
       text-align: left;
       font-weight: 600;
+      word-break: break-word;
     }
     
     td {
-      padding: 12px;
+      padding: 12px 8px;
       border-bottom: 1px solid #e0e0e0;
+      word-break: break-word;
     }
     
-    tr:hover { background: #f9fafb; }
+    tr:nth-child(even) {
+      background-color: #f9fafb;
+    }
+    
+    tr:hover {
+      background-color: #f0f4f8;
+    }
     
     /* FAQ */
     .faq-item {
@@ -209,11 +225,13 @@
     footer h3 {
       color: white;
       margin-top: 0;
+      font-size: 18px;
     }
     
     footer p {
       color: rgba(255, 255, 255, 0.9);
       font-size: 14px;
+      margin-bottom: 12px;
     }
     
     footer a {
@@ -238,12 +256,43 @@
       font-weight: 500;
     }
     
-    /* Responsive */
+    /* Mobile Optimization */
     @media (max-width: 768px) {
-      .card { padding: 20px; }
+      .card { 
+        padding: 20px; 
+        margin: 16px 0;
+      }
       h2 { font-size: 20px; }
       h3 { font-size: 16px; }
+      h4 { font-size: 15px; }
       .hero { padding: 28px 16px; }
+      
+      th, td {
+        padding: 10px 6px;
+        font-size: 13px;
+      }
+      
+      p { font-size: 14px; }
+      li { font-size: 14px; }
+    }
+
+    @media (max-width: 480px) {
+      .card { padding: 16px; }
+      h2 { font-size: 18px; }
+      h3 { font-size: 15px; }
+      
+      th, td {
+        padding: 8px 4px;
+        font-size: 12px;
+      }
+      
+      p { font-size: 13px; }
+      li { font-size: 13px; }
+      
+      .callbox {
+        padding: 12px 14px;
+        font-size: 14px;
+      }
     }
   </style>
 </head>
@@ -320,33 +369,39 @@
     <p>One-time payment allows you to pay a single billing cycle without setting up automatic recurring payments. This is useful if you prefer <span class="highlight">manual payment control</span> or want to avoid auto-pay commitments.</p>
 
     <h3>One-Time Payment vs. Auto Pay</h3>
-    <table>
-      <tr>
-        <th>Feature</th>
-        <th>One-Time Payment</th>
-        <th>Auto Pay</th>
-      </tr>
-      <tr>
-        <td>Payment Frequency</td>
-        <td>Single payment only</td>
-        <td>Automatic on due date</td>
-      </tr>
-      <tr>
-        <td>Setup Required</td>
-        <td>No setup needed</td>
-        <td>Initial setup required</td>
-      </tr>
-      <tr>
-        <td>Payment Control</td>
-        <td>Full manual control</td>
-        <td>Scheduled automatically</td>
-      </tr>
-      <tr>
-        <td>Best For</td>
-        <td>Occasional payers</td>
-        <td>Consistent monthly payments</td>
-      </tr>
-    </table>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>One-Time Payment</th>
+            <th>Auto Pay</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Payment Frequency</td>
+            <td>Single payment only</td>
+            <td>Automatic on due date</td>
+          </tr>
+          <tr>
+            <td>Setup Required</td>
+            <td>No setup needed</td>
+            <td>Initial setup required</td>
+          </tr>
+          <tr>
+            <td>Payment Control</td>
+            <td>Full manual control</td>
+            <td>Scheduled automatically</td>
+          </tr>
+          <tr>
+            <td>Best For</td>
+            <td>Occasional payers</td>
+            <td>Consistent monthly payments</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
     <p><strong>Choose one-time payment if:</strong> You prefer paying manually each billing cycle, want to avoid automatic charges, or have variable payment amounts.</p>
   </div>
@@ -419,44 +474,50 @@
   <div class="card">
     <h2>Progressive Bill Payment Processing Time & Speed</h2>
     
-    <table>
-      <tr>
-        <th>Payment Method</th>
-        <th>Processing Speed</th>
-        <th>Confirmation</th>
-        <th>Best Use</th>
-      </tr>
-      <tr>
-        <td>Quick Bill Pay</td>
-        <td>Instant (0-60 sec)</td>
-        <td>Immediate confirmation</td>
-        <td>Urgent payments</td>
-      </tr>
-      <tr>
-        <td>Phone Payment (IVR)</td>
-        <td>Instant</td>
-        <td>Immediate code</td>
-        <td>24/7 convenience</td>
-      </tr>
-      <tr>
-        <td>Online Payment</td>
-        <td>Instant</td>
-        <td>Email + account</td>
-        <td>Logged-in users</td>
-      </tr>
-      <tr>
-        <td>Bank Transfer</td>
-        <td>1-2 business days</td>
-        <td>After processing</td>
-        <td>Bulk/large payments</td>
-      </tr>
-      <tr>
-        <td>Auto Pay</td>
-        <td>Scheduled date</td>
-        <td>Pre-scheduled</td>
-        <td>Recurring payments</td>
-      </tr>
-    </table>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Payment Method</th>
+            <th>Processing Speed</th>
+            <th>Confirmation</th>
+            <th>Best Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Quick Bill Pay</td>
+            <td>Instant (0-60 sec)</td>
+            <td>Immediate confirmation</td>
+            <td>Urgent payments</td>
+          </tr>
+          <tr>
+            <td>Phone Payment (IVR)</td>
+            <td>Instant</td>
+            <td>Immediate code</td>
+            <td>24/7 convenience</td>
+          </tr>
+          <tr>
+            <td>Online Payment</td>
+            <td>Instant</td>
+            <td>Email + account</td>
+            <td>Logged-in users</td>
+          </tr>
+          <tr>
+            <td>Bank Transfer</td>
+            <td>1-2 business days</td>
+            <td>After processing</td>
+            <td>Bulk/large payments</td>
+          </tr>
+          <tr>
+            <td>Auto Pay</td>
+            <td>Scheduled date</td>
+            <td>Pre-scheduled</td>
+            <td>Recurring payments</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
     <p><strong>Fastest payment option:</strong> Quick bill pay and online payment are instant and recommended for urgent payments.</p>
   </div>
@@ -670,9 +731,9 @@
     <p><strong>Last Updated:</strong> June 2026</p>
     
     <div class="meta-info">
-      ✓ Fact-checked against insurance payment standards
-      ✓ Updated regularly with payment method changes
-      ✓ Mobile-optimized for fast loading
+      ✓ Fact-checked against insurance payment standards<br>
+      ✓ Updated regularly with payment method changes<br>
+      ✓ Mobile-optimized for fast loading<br>
       ✓ SEO-optimized for search visibility
     </div>
   </div>
