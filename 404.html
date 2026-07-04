@@ -50,30 +50,17 @@
 
   <script>
     (function(){
-      // Compute homepage root based on current path so redirect stays on same repository/site subpath.
-      // Example: /progressivebillpayment/non-existent -> /progressivebillpayment/
+      // Robust same-origin root computation for GitHub Pages and similar hosts.
       function computeHome(){
         try{
-          var p = location.pathname;
-          // If path already ends with repository root (single segment) or '/', try to keep repo folder
-          if(p.endsWith('/')) return location.origin + p;
-          var parts = p.split('/');
-          // Remove empty trailing segment if any
-          if(parts[parts.length-1] === '') parts.pop();
-          // If path looks like /owner/repo/... we want /owner/repo/
-          if(parts.length >= 3){
-            // keep first three segments ['', 'owner', 'repo'] => join first three
-            var rootParts = parts.slice(0,3);
-            if(rootParts[0] === '') rootParts[0] = '';
-            var root = rootParts.join('/');
-            if(!root.endsWith('/')) root += '/';
-            return location.origin + root;
-          }
-          // Fallback: remove last segment
-          parts.pop();
-          var root = parts.join('/');
-          if(!root.endsWith('/')) root += '/';
-          if(root === '') root = '/';
+          // Get path segments without empties: e.g. '/progressivebillpayment/foo' -> ['progressivebillpayment','foo']
+          var segments = location.pathname.split('/').filter(function(s){return s.length>0});
+          if(segments.length === 0) return location.origin + '/';
+
+          // For user.github.io/repo paths the first segment is the repo name -> use it
+          // For other hosts where site is at root, this falls back to the first segment which is fine.
+          var repoSegment = segments[0];
+          var root = '/' + repoSegment + '/';
           return location.origin + root;
         }catch(e){
           return location.origin + '/';
@@ -84,12 +71,25 @@
       var btn = document.getElementById('homeBtn');
       btn.setAttribute('href', home);
 
-      // Immediately redirect to home (use replace so 404 doesn't stay in history)
-      try{
-        window.location.replace(home);
-      }catch(e){
-        document.getElementById('fallback').textContent = 'Automatic redirect failed — click "Go to Homepage" to continue.';
-      }
+      // Ensure button works even if JS redirect fails: explicit click handler
+      btn.addEventListener('click', function(e){
+        e.preventDefault();
+        try{ window.location.href = home; }catch(err){ window.location.replace(home); }
+      });
+
+      // Try automatic redirect after a very small delay to let user click if they want
+      setTimeout(function(){
+        try{
+          // Replace so 404 isn't kept in history
+          window.location.replace(home);
+        }catch(err){
+          document.getElementById('fallback').textContent = 'Automatic redirect failed — click "Go to Homepage" to continue.';
+          console.error('redirect error', err);
+        }
+      }, 120);
+
+      // Debug: print computed home to console for testing
+      if(window.console && console.log) console.log('Computed homepage for redirect:', home);
     })();
   </script>
 </body>
