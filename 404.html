@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>404 — Page Not Found</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0b67ff">
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--accent:#0b67ff;--muted:#94a3b8;--glass:rgba(255,255,255,0.04)}
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,'Helvetica Neue',Arial;color:#e6eefc;background:linear-gradient(180deg,#071032 0%, #071a3a 60%);-webkit-font-smoothing:antialiased}
+    .wrap{min-height:100%;display:flex;align-items:center;justify-content:center;padding:48px}
+    .card{width:100%;max-width:880px;background:linear-gradient(180deg,rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:14px;padding:34px;border:1px solid rgba(255,255,255,0.04);backdrop-filter:blur(6px);box-shadow:0 10px 40px rgba(2,6,23,0.6)}
+    .brand{display:flex;gap:14px;align-items:center}
+    .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#0058d4);display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:20px}
+    h1{margin:6px 0 6px 0;font-size:28px;color:white}
+    p.lead{margin:10px 0;color:var(--muted);font-size:15px;line-height:1.6}
+    .actions{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+    .btn{background:var(--accent);color:white;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:700;box-shadow:0 8px 28px rgba(11,103,255,0.18)}
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#dbeafe}
+    .meta{margin-top:16px;color:var(--muted);font-size:13px}
+    .fallback{margin-top:20px;background:var(--glass);padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);color:#c7d2fe}
+    .spinner{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,0.9);display:inline-block;margin-right:8px;box-shadow:0 2px 8px rgba(11,103,255,0.18)}
+    @media (max-width:640px){.card{padding:20px}.brand h1{font-size:20px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card" role="main" aria-labelledby="title">
+      <div class="brand">
+        <div class="logo">PB</div>
+        <div>
+          <h1 id="title">404 — Page Not Found</h1>
+          <div class="meta">We couldn't find that page. Redirecting you to the site homepage now.</div>
+        </div>
+      </div>
+
+      <p class="lead">You're being taken to the official homepage for this guide. If your browser does not redirect automatically, click the button below.</p>
+
+      <div class="actions">
+        <a id="homeBtn" class="btn" href="#">Go to Homepage</a>
+        <a class="btn ghost" href="/sitemap.xml">View sitemap</a>
+      </div>
+
+      <div class="fallback" id="fallback"> <span class="spinner" aria-hidden="true"></span>Preparing homepage — opening now…</div>
+
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      // Compute homepage root based on current path so redirect stays on same repository/site subpath.
+      // Example: /progressivebillpayment/non-existent -> /progressivebillpayment/
+      function computeHome(){
+        try{
+          var p = location.pathname;
+          // If path already ends with repository root (single segment) or '/', try to keep repo folder
+          if(p.endsWith('/')) return location.origin + p;
+          var parts = p.split('/');
+          // Remove empty trailing segment if any
+          if(parts[parts.length-1] === '') parts.pop();
+          // If path looks like /owner/repo/... we want /owner/repo/
+          if(parts.length >= 3){
+            // keep first three segments ['', 'owner', 'repo'] => join first three
+            var rootParts = parts.slice(0,3);
+            if(rootParts[0] === '') rootParts[0] = '';
+            var root = rootParts.join('/');
+            if(!root.endsWith('/')) root += '/';
+            return location.origin + root;
+          }
+          // Fallback: remove last segment
+          parts.pop();
+          var root = parts.join('/');
+          if(!root.endsWith('/')) root += '/';
+          if(root === '') root = '/';
+          return location.origin + root;
+        }catch(e){
+          return location.origin + '/';
+        }
+      }
+
+      var home = computeHome();
+      var btn = document.getElementById('homeBtn');
+      btn.setAttribute('href', home);
+
+      // Immediately redirect to home (use replace so 404 doesn't stay in history)
+      try{
+        window.location.replace(home);
+      }catch(e){
+        document.getElementById('fallback').textContent = 'Automatic redirect failed — click "Go to Homepage" to continue.';
+      }
+    })();
+  </script>
+</body>
+</html>
