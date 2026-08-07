@@ -1,0 +1,72 @@
+{
+  "baseUrl": "https://progressiveguide.github.io/progressivebillpayment",
+  "siteName": "Progressive Bill Pay Guide",
+  "paths": [
+    "/",
+    "/404.html"
+  ],
+  "htmlPages": [
+    "index.html",
+    "404.html"
+  ],
+  "contentOptions": {
+    "introVariants": [
+      "Progressive Insurance offers flexible bill payment options including quick pay, phone payment, and auto pay setup.",
+      "Need to pay your Progressive insurance bill fast? Quick Bill Pay requires no login—just your policy number, ZIP, and date of birth.",
+      "Progressive bill pay is easy and secure. Pay online, by phone at 1(888)414-4406, or set up recurring auto pay in minutes.",
+      "Managing your Progressive insurance payments is straightforward with multiple methods: online, phone, quick pay, and auto pay.",
+      "Stay current on your Progressive insurance policy with convenient bill payment options available 24/7 online and by phone."
+    ],
+    "ctaVariants": [
+      "Pay Your Progressive Bill Now →",
+      "Quick Pay – No Login Required →",
+      "Set Up Auto Pay Today →",
+      "Call to Pay: 1(888)414-4406 →",
+      "Pay Progressive Bill Online →"
+    ]
+  },
+  "imagePool": [
+    "https://progressiveguide.github.io/progressivebillpayment/og-image.jpg",
+    "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1556742031-c6961e8560b0?w=800&auto=format&fit=crop"
+  ],
+  "trendingSearchTerms": [
+    "progressive quick bill pay",
+    "pay progressive insurance online",
+    "progressive bill pay phone number",
+    "progressive auto pay setup",
+    "progressive one time payment",
+    "progressive billing phone 888-414-4406",
+    "progressive insurance payment methods",
+    "pay progressive without login",
+    "progressive insurance payment due date",
+    "progressive snap pay"
+  ],
+  "newsHeadlines": [
+    "Progressive Insurance updates online payment portal for faster processing",
+    "New: Pay Progressive bill via quick pay without creating an account",
+    "Auto pay enrollment tips for Progressive insurance policyholders",
+    "Progressive billing FAQ: What to do if your payment is delayed",
+    "How to avoid Progressive insurance late fees with auto pay",
+    "Progressive quick bill pay: step-by-step guide updated for 2026",
+    "Phone payment option available 24/7 at Progressive: 1(888)414-4406",
+    "Progressive insurance payment grace period: what you need to know"
+  ],
+  "engagement": {
+    "viewIncrementMin": 3,
+    "viewIncrementMax": 17,
+    "rating": "4.8",
+    "baseViews": 4800,
+    "baseReviews": 312
+  },
+  "indexing": {
+    "sitemapUrl": "https://progressiveguide.github.io/progressivebillpayment/sitemap.xml",
+    "pingUrls": [
+      "https://www.google.com/ping?sitemap=https://progressiveguide.github.io/progressivebillpayment/sitemap.xml",
+      "https://www.bing.com/ping?sitemap=https://progressiveguide.github.io/progressivebillpayment/sitemap.xml"
+    ],
+    "webhookEndpoints": []
+  }
+}

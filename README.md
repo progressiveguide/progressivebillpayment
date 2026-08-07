@@ -1,59 +1,111 @@
-Insurance Bill Pay Help – Progressive Insurance Guide
+# Progressive Bill Pay Guide
 
-This repository hosts informational resources designed to help users understand insurance bill payment methods, billing cycles, payment timelines, and commonly used payment options.
+Independent informational guide to Progressive Insurance bill payment methods, billing cycles, and account management options.
 
-Purpose
+**Website:** https://progressiveguide.github.io/progressivebillpayment/
 
-The goal of this project is to:
+**Last Updated:** August 7, 2026
 
-- Provide clear and easy-to-understand billing information
-- Explain available payment methods and billing processes
-- Help users locate official payment resources
-- Answer common questions related to insurance billing and account management
+---
 
-Content Scope
+## Purpose
 
-Topics covered may include:
+This repository hosts resources to help users understand:
 
 - Online bill payment guidance
-- Guest payment options
-- Automatic payment enrollment information
+- Guest (no-login) payment options
+- Automatic payment enrollment
 - Billing schedules and due dates
 - Payment processing timelines
-- Frequently asked billing questions
 
-Disclaimer
+---
 
-This website is an informational publishing project created for educational and reference purposes only.
+## Automated SEO Freshness System
 
-This website is not affiliated with, authorized by, sponsored by, or endorsed by Progressive Insurance or any other insurance provider referenced within the content.
+This repository runs an hourly automated SEO freshness workflow that rotates dynamic content, refreshes structured data timestamps, regenerates the sitemap, and notifies search engine indexing endpoints.
 
-Users should always complete payments, access accounts, and manage insurance policies through official company websites and authorized customer service channels.
+### How It Works
 
-All trademarks, service marks, logos, and brand names remain the property of their respective owners.
+A GitHub Actions workflow (`.github/workflows/seo-battle.yml`) triggers every hour and runs all 5 scripts in sequence. Changes are committed only when files actually change.
 
-Technology Stack
+### Scripts
 
-- GitHub Pages
-- Static HTML5
-- Mobile-Responsive Design
-- SEO-Friendly Architecture
-- Structured Data Markup
-- FAQ Optimization
-- Fast Loading Performance
+| Script | Command | Description |
+|--------|---------|-------------|
+| `scripts/fresh-data.js` | `npm run fresh-data` | Reads `config/seo-config.json` and injects trending searches and news headlines into HTML pages. Writes `data/fresh-data.json`. |
+| `scripts/rotate-content.js` | `npm run rotate-content` | Rotates intro/CTA text variants, lead image, last-reviewed date, and increments engagement counters. Persists state in `.seo-state.json`. |
+| `scripts/update-schema.js` | `npm run update-schema` | Updates `dateModified` and `lastReviewed` in all JSON-LD blocks across HTML pages. |
+| `scripts/generate-sitemap.js` | `npm run generate-sitemap` | Regenerates `sitemap.xml` with today's date and correct priorities. |
+| `scripts/notify-indexing.js` | `npm run notify-indexing` | Pings Google and Bing sitemap endpoints; sends any configured webhooks. Non-fatal on error. |
 
-Website
+### Run All Scripts Locally
 
-https://utilitybillhelp.github.io/
+```bash
+npm run seo-update
+```
 
-Publishing Standards
+Or run individually:
 
-Content is reviewed periodically for accuracy, clarity, and usability. Information may change as insurers update their billing systems, payment methods, or customer service procedures.
+```bash
+npm run fresh-data
+npm run rotate-content
+npm run update-schema
+npm run generate-sitemap
+npm run notify-indexing
+```
 
-Last Updated
+### State Persistence
 
-June 2026
+Script state (view counts, rotation indices, last engagement timestamp) is stored in `.seo-state.json` at the repository root. This file is committed automatically on each workflow run when content changes.
 
-License
+### Configuration
 
-Content is provided for informational purposes only. Users should independently verify all payment-related information through official sources before taking action.
+All SEO configuration lives in `config/seo-config.json`:
+
+- `contentOptions.introVariants` — rotating intro text for HTML pages
+- `contentOptions.ctaVariants` — rotating call-to-action button text
+- `imagePool` — lead image URLs to rotate
+- `trendingSearchTerms` — injected into the Related Searches section
+- `newsHeadlines` — injected into the Latest Updates section
+- `indexing.sitemapUrl` — sitemap URL pinged to search engines
+- `indexing.pingUrls` — Google and Bing ping endpoints
+- `indexing.webhookEndpoints` — optional POST webhook URLs
+
+### Dynamic HTML Markers
+
+HTML pages use comment markers for dynamic injection:
+
+```html
+<!-- DYNAMIC:INTRO -->…<!-- /DYNAMIC:INTRO -->
+<!-- DYNAMIC:LEAD-IMAGE -->…<!-- /DYNAMIC:LEAD-IMAGE -->
+<!-- DYNAMIC:CTA -->…<!-- /DYNAMIC:CTA -->
+<!-- DYNAMIC:LAST-VERIFIED -->…<!-- /DYNAMIC:LAST-VERIFIED -->
+<!-- DYNAMIC:ENGAGEMENT -->…<!-- /DYNAMIC:ENGAGEMENT -->
+<!-- DYNAMIC:RELATED-SEARCHES -->…<!-- /DYNAMIC:RELATED-SEARCHES -->
+<!-- DYNAMIC:NEWS-TICKER -->…<!-- /DYNAMIC:NEWS-TICKER -->
+```
+
+---
+
+## Technology Stack
+
+- GitHub Pages (static hosting)
+- Static HTML5 / CSS3
+- Mobile-responsive design
+- SEO-optimized structured data (JSON-LD)
+- Automated hourly freshness via GitHub Actions
+- Node.js scripts (no external dependencies)
+
+---
+
+## Disclaimer
+
+This website is **not affiliated with, authorized by, sponsored by, or endorsed by Progressive Insurance** or any other insurance provider. Users should always complete payments through official company websites and authorized customer service channels.
+
+All trademarks and brand names remain the property of their respective owners.
+
+---
+
+## License
+
+Content is provided for informational purposes only. Verify all payment information through official sources before taking action.
