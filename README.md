@@ -56,7 +56,7 @@ Keep the `main` branch configured in GitHub with:
 - Static HTML5 / CSS3
 - Mobile-responsive design
 - SEO-optimized structured data (JSON-LD)
-- Automated hourly freshness via GitHub Actions
+- GitHub Actions review guard for protected content changes
 - Node.js scripts (no external dependencies)
 
 ---
