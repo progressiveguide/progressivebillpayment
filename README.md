@@ -20,70 +20,33 @@ This repository hosts resources to help users understand:
 
 ---
 
-## Automated SEO Freshness System
+## Content Integrity Safeguards
 
-This repository runs an hourly automated SEO freshness workflow that rotates dynamic content, refreshes structured data timestamps, regenerates the sitemap, and notifies search engine indexing endpoints.
+Automated hourly content rotation has been removed to keep published content stable and prevent further degradation of `index.html` and other critical pages.
 
-### How It Works
+### Protected content files
 
-A GitHub Actions workflow (`.github/workflows/seo-battle.yml`) triggers every hour and runs all 5 scripts in sequence. Changes are committed only when files actually change.
+The following files are treated as protected content and should only change through reviewed pull requests:
 
-### Scripts
+- `index.html`
+- `404.html`
+- `sitemap.xml`
 
-| Script | Command | Description |
-|--------|---------|-------------|
-| `scripts/fresh-data.js` | `npm run fresh-data` | Reads `config/seo-config.json` and injects trending searches and news headlines into HTML pages. Writes `data/fresh-data.json`. |
-| `scripts/rotate-content.js` | `npm run rotate-content` | Rotates intro/CTA text variants, lead image, last-reviewed date, and increments engagement counters. Persists state in `.seo-state.json`. |
-| `scripts/update-schema.js` | `npm run update-schema` | Updates `dateModified` and `lastReviewed` in all JSON-LD blocks across HTML pages. |
-| `scripts/generate-sitemap.js` | `npm run generate-sitemap` | Regenerates `sitemap.xml` with today's date and correct priorities. |
-| `scripts/notify-indexing.js` | `npm run notify-indexing` | Pings Google and Bing sitemap endpoints; sends any configured webhooks. Non-fatal on error. |
+### Review guard
 
-### Run All Scripts Locally
+This repository now includes:
 
-```bash
-npm run seo-update
-```
+- `.github/CODEOWNERS` — routes protected content changes to `@progressiveguide`
+- `.github/workflows/content-review-guard.yml` — fails pull requests to `main` when protected content changes do not have at least one approval
 
-Or run individually:
+### Main branch protection
 
-```bash
-npm run fresh-data
-npm run rotate-content
-npm run update-schema
-npm run generate-sitemap
-npm run notify-indexing
-```
+Keep the `main` branch configured in GitHub with:
 
-### State Persistence
-
-Script state (view counts, rotation indices, last engagement timestamp) is stored in `.seo-state.json` at the repository root. This file is committed automatically on each workflow run when content changes.
-
-### Configuration
-
-All SEO configuration lives in `config/seo-config.json`:
-
-- `contentOptions.introVariants` — rotating intro text for HTML pages
-- `contentOptions.ctaVariants` — rotating call-to-action button text
-- `imagePool` — lead image URLs to rotate
-- `trendingSearchTerms` — injected into the Related Searches section
-- `newsHeadlines` — injected into the Latest Updates section
-- `indexing.sitemapUrl` — sitemap URL pinged to search engines
-- `indexing.pingUrls` — Google and Bing ping endpoints
-- `indexing.webhookEndpoints` — optional POST webhook URLs
-
-### Dynamic HTML Markers
-
-HTML pages use comment markers for dynamic injection:
-
-```html
-<!-- DYNAMIC:INTRO -->…<!-- /DYNAMIC:INTRO -->
-<!-- DYNAMIC:LEAD-IMAGE -->…<!-- /DYNAMIC:LEAD-IMAGE -->
-<!-- DYNAMIC:CTA -->…<!-- /DYNAMIC:CTA -->
-<!-- DYNAMIC:LAST-VERIFIED -->…<!-- /DYNAMIC:LAST-VERIFIED -->
-<!-- DYNAMIC:ENGAGEMENT -->…<!-- /DYNAMIC:ENGAGEMENT -->
-<!-- DYNAMIC:RELATED-SEARCHES -->…<!-- /DYNAMIC:RELATED-SEARCHES -->
-<!-- DYNAMIC:NEWS-TICKER -->…<!-- /DYNAMIC:NEWS-TICKER -->
-```
+- required pull requests before merge
+- at least 1 approval
+- required code owner review
+- the `Content Review Guard` status check enabled
 
 ---
 
@@ -93,7 +56,7 @@ HTML pages use comment markers for dynamic injection:
 - Static HTML5 / CSS3
 - Mobile-responsive design
 - SEO-optimized structured data (JSON-LD)
-- Automated hourly freshness via GitHub Actions
+- GitHub Actions review guard for protected content changes
 - Node.js scripts (no external dependencies)
 
 ---
