@@ -1,74 +1,59 @@
-# Progressive Bill Pay Guide
+Insurance Bill Pay Help – Progressive Insurance Guide
 
-Independent informational guide to Progressive Insurance bill payment methods, billing cycles, and account management options.
+This repository hosts informational resources designed to help users understand insurance bill payment methods, billing cycles, payment timelines, and commonly used payment options.
 
-**Website:** https://progressiveguide.github.io/progressivebillpayment/
+Purpose
 
-**Last Updated:** August 7, 2026
+The goal of this project is to:
 
----
+- Provide clear and easy-to-understand billing information
+- Explain available payment methods and billing processes
+- Help users locate official payment resources
+- Answer common questions related to insurance billing and account management
 
-## Purpose
+Content Scope
 
-This repository hosts resources to help users understand:
+Topics covered may include:
 
 - Online bill payment guidance
-- Guest (no-login) payment options
-- Automatic payment enrollment
+- Guest payment options
+- Automatic payment enrollment information
 - Billing schedules and due dates
 - Payment processing timelines
+- Frequently asked billing questions
 
----
+Disclaimer
 
-## Content Integrity Safeguards
+This website is an informational publishing project created for educational and reference purposes only.
 
-Automated hourly content rotation has been removed to keep published content stable and prevent further degradation of `index.html` and other critical pages.
+This website is not affiliated with, authorized by, sponsored by, or endorsed by Progressive Insurance or any other insurance provider referenced within the content.
 
-### Protected content files
+Users should always complete payments, access accounts, and manage insurance policies through official company websites and authorized customer service channels.
 
-The following files are treated as protected content and should only change through reviewed pull requests:
+All trademarks, service marks, logos, and brand names remain the property of their respective owners.
 
-- `index.html`
-- `404.html`
-- `sitemap.xml`
+Technology Stack
 
-### Review guard
+- GitHub Pages
+- Static HTML5
+- Mobile-Responsive Design
+- SEO-Friendly Architecture
+- Structured Data Markup
+- FAQ Optimization
+- Fast Loading Performance
 
-This repository now includes:
+Website
 
-- `.github/CODEOWNERS` — routes protected content changes to `@progressiveguide`
-- `.github/workflows/content-review-guard.yml` — fails pull requests to `main` when protected content changes do not have at least one approval
+https://utilitybillhelp.github.io/
 
-### Main branch protection
+Publishing Standards
 
-Keep the `main` branch configured in GitHub with:
+Content is reviewed periodically for accuracy, clarity, and usability. Information may change as insurers update their billing systems, payment methods, or customer service procedures.
 
-- required pull requests before merge
-- at least 1 approval
-- required code owner review
-- the `Content Review Guard` status check enabled
+Last Updated
 
----
+June 2026
 
-## Technology Stack
+License
 
-- GitHub Pages (static hosting)
-- Static HTML5 / CSS3
-- Mobile-responsive design
-- SEO-optimized structured data (JSON-LD)
-- GitHub Actions review guard for protected content changes
-- Node.js scripts (no external dependencies)
-
----
-
-## Disclaimer
-
-This website is **not affiliated with, authorized by, sponsored by, or endorsed by Progressive Insurance** or any other insurance provider. Users should always complete payments through official company websites and authorized customer service channels.
-
-All trademarks and brand names remain the property of their respective owners.
-
----
-
-## License
-
-Content is provided for informational purposes only. Verify all payment information through official sources before taking action.
+Content is provided for informational purposes only. Users should independently verify all payment-related information through official sources before taking action.
