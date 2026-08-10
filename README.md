@@ -1,8 +1,8 @@
-Insurance Bill Pay Help – Progressive Insurance Guide
+# Insurance Bill Pay Help – Progressive Insurance Guide
 
 This repository hosts informational resources designed to help users understand insurance bill payment methods, billing cycles, payment timelines, and commonly used payment options.
 
-Purpose
+## Purpose
 
 The goal of this project is to:
 
@@ -11,7 +11,7 @@ The goal of this project is to:
 - Help users locate official payment resources
 - Answer common questions related to insurance billing and account management
 
-Content Scope
+## Content Scope
 
 Topics covered may include:
 
@@ -22,17 +22,17 @@ Topics covered may include:
 - Payment processing timelines
 - Frequently asked billing questions
 
-Disclaimer
+## Website
 
-This website is an informational publishing project created for educational and reference purposes only.
+**Live Site:** https://utilitybillhelp.github.io/
 
-This website is not affiliated with, authorized by, sponsored by, or endorsed by Progressive Insurance or any other insurance provider referenced within the content.
+This repository is deployed as a GitHub Pages site at the domain above. The site provides direct access to all bill payment guides and resources.
 
-Users should always complete payments, access accounts, and manage insurance policies through official company websites and authorized customer service channels.
+## Deployment
 
-All trademarks, service marks, logos, and brand names remain the property of their respective owners.
+This project uses GitHub Pages for hosting. Content is automatically deployed from the main branch to the live website. The 404.html file handles page not found errors and redirects users to the homepage.
 
-Technology Stack
+## Technology Stack
 
 - GitHub Pages
 - Static HTML5
@@ -42,18 +42,24 @@ Technology Stack
 - FAQ Optimization
 - Fast Loading Performance
 
-Website
+## Disclaimer
 
-https://utilitybillhelp.github.io/
+This website is an informational publishing project created for educational and reference purposes only.
 
-Publishing Standards
+This website is not affiliated with, authorized by, sponsored by, or endorsed by Progressive Insurance or any other insurance provider referenced within the content.
+
+Users should always complete payments, access accounts, and manage insurance policies through official company websites and authorized customer service channels.
+
+All trademarks, service marks, logos, and brand names remain the property of their respective owners.
+
+## Publishing Standards
 
 Content is reviewed periodically for accuracy, clarity, and usability. Information may change as insurers update their billing systems, payment methods, or customer service procedures.
 
-Last Updated
+## Last Updated
 
-June 2026
+August 2026
 
-License
+## License
 
 Content is provided for informational purposes only. Users should independently verify all payment-related information through official sources before taking action.
