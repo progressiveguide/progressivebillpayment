@@ -1,5 +1,5 @@
 /* TEAM */
-Publisher: billinfo-desk
+Publisher: Progressive Guide
 Role: Informational Publisher
 
 /* SITE */
