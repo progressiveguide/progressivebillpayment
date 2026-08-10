@@ -7,12 +7,6 @@
     "node": ">=18"
   },
   "scripts": {
-    "fresh-data": "node scripts/fresh-data.js",
-    "rotate-content": "node scripts/rotate-content.js",
-    "update-schema": "node scripts/update-schema.js",
-    "generate-sitemap": "node scripts/generate-sitemap.js",
-    "notify-indexing": "node scripts/notify-indexing.js",
-    "seo-update": "npm run fresh-data && npm run rotate-content && npm run update-schema && npm run generate-sitemap && npm run notify-indexing"
   },
   "keywords": [
     "progressive",
