@@ -6,6 +6,9 @@
   <title>404 — Page Not Found</title>
   <meta name="robots" content="noindex">
   <meta name="theme-color" content="#0b67ff">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <style>
     :root{--bg:#0f1724;--card:#0b1220;--accent:#0b67ff;--muted:#94a3b8;--glass:rgba(255,255,255,0.04)}
     *{box-sizing:border-box}
@@ -27,12 +30,12 @@
 </head>
 <body>
   <div class="wrap">
-    <div class="card" role="main" aria-labelledby="title">
+    <main class="card" aria-labelledby="title">
       <div class="brand">
         <div class="logo">PB</div>
         <div>
           <h1 id="title">404 — Page Not Found</h1>
-          <div class="meta">We couldn't find that page. Redirecting you to the site homepage now.</div>
+          <div class="meta">We couldn't find that page. Redirecting you to the site homepage shortly.</div>
         </div>
       </div>
 
@@ -43,38 +46,30 @@
         <a class="btn ghost" href="https://progressiveguide.github.io/progressivebillpayment/sitemap.xml">View sitemap</a>
       </div>
 
-      <div class="fallback" id="fallback"> <span class="spinner" aria-hidden="true"></span>Preparing homepage — opening now…</div>
+      <div class="fallback" id="fallback"> <span class="spinner" aria-hidden="true"></span>Preparing homepage — opening in 4 seconds…</div>
 
-    </div>
+    </main>
   </div>
 
   <script>
-    (function(){
-      // Hardcoded homepage URL for progressiveguide.github.io/progressivebillpayment
-      var home = 'https://progressiveguide.github.io/progressivebillpayment/';
-      var btn = document.getElementById('homeBtn');
-      btn.setAttribute('href', home);
+  (function(){
+    var btn = document.getElementById('homeBtn');
+    var fallback = document.getElementById('fallback');
 
-      // Ensure button works even if JS redirect fails: explicit click handler
-      btn.addEventListener('click', function(e){
-        e.preventDefault();
-        try{ window.location.href = home; }catch(err){ window.location.replace(home); }
-      });
+    if (!btn || !fallback) {
+      return;
+    }
 
-      // Try automatic redirect after a very small delay to let user click if they want
-      setTimeout(function(){
-        try{
-          // Replace so 404 isn't kept in history
-          window.location.replace(home);
-        }catch(err){
-          document.getElementById('fallback').textContent = 'Automatic redirect failed — click "Go to Homepage" to continue.';
-          console.error('redirect error', err);
-        }
-      }, 120);
+    var home = btn.href;
 
-      // Debug: print computed home to console for testing
-      if(window.console && console.log) console.log('Computed homepage for redirect:', home);
-    })();
-  </script>
+    window.setTimeout(function(){
+      try {
+        window.location.replace(home);
+      } catch (error) {
+        fallback.textContent = 'Automatic redirect failed — click "Go to Homepage" to continue.';
+      }
+    }, 4000);
+  })();
+</script>
 </body>
 </html>
