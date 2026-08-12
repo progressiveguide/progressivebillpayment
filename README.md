@@ -30,7 +30,27 @@ This repository is deployed as a GitHub Pages site at the domain above. The site
 
 ## Deployment
 
-This project uses GitHub Pages for hosting. Content is automatically deployed from the main branch to the live website. The 404.html file handles page not found errors and redirects users to the homepage.
+This project uses GitHub Pages for hosting. Content is automatically deployed from the main branch to the live website. The 404.html file provides a branded page-not-found experience with manual recovery links and a delayed redirect to the homepage.
+
+## Local Preview
+
+To preview the site locally from the repository root:
+
+```bash
+python3 -m http.server 8000
+```
+
+Then open `http://localhost:8000/` in a browser.
+
+## Content Maintenance Checklist
+
+When updating the site, keep the following items in sync:
+
+- Update the visible `Last Updated` text in `index.html` when content changes.
+- Update the `dateModified` value in the Article JSON-LD block in `index.html`.
+- Keep the FAQ JSON-LD content identical to the visible FAQ copy.
+- Verify that referenced assets such as `og-image.jpg`, `logo.png`, and app icons exist in the repository.
+- Update `sitemap.xml` `lastmod` values when publishing a content refresh.
 
 ## Technology Stack
 
@@ -62,4 +82,4 @@ August 2026
 
 ## License
 
-Content is provided for informational purposes only. Users should independently verify all payment-related information through official sources before taking action.
+This repository includes a `LICENSE` file. Unless otherwise stated, site content and design assets are provided for informational viewing only and may not be redistributed or republished without permission.
