@@ -78,7 +78,7 @@ Content is reviewed periodically for accuracy, clarity, and usability. Informati
 
 ## Last Updated
 
-August 2026
+September 2026
 
 ## License
 
