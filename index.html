@@ -30,28 +30,28 @@
       }
 
       var params = new URLSearchParams(window.location.search);
+      var normalizedParams = new URLSearchParams();
       var trackingParams = ['gclid', 'fbclid', 'msclkid'];
       var changed = false;
-      var keysToRemove = [];
 
-      Array.from(params.keys()).forEach(function (key) {
+      Array.from(params.entries()).forEach(function (entry) {
+        var key = entry[0];
+        var value = entry[1];
         var normalizedKey = key.toLowerCase();
 
         if (normalizedKey.indexOf('utm_') === 0 || trackingParams.indexOf(normalizedKey) !== -1) {
-          keysToRemove.push(key);
+          changed = true;
+          return;
         }
-      });
 
-      keysToRemove.forEach(function (key) {
-        params.delete(key);
-        changed = true;
+        normalizedParams.append(key, value);
       });
 
       if (!changed) {
         return;
       }
 
-      var query = params.toString();
+      var query = normalizedParams.toString();
       var normalizedUrl = window.location.pathname + (query ? '?' + query : '') + window.location.hash;
       window.history.replaceState(null, document.title, normalizedUrl);
     })();
