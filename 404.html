@@ -53,8 +53,8 @@
       function computeHome(){
         try{
           var segments = location.pathname.split('/').filter(function(segment){ return segment.length > 0; });
-          if(segments.length <= 1) return '/';
-          return '/' + segments[0] + '/';
+          if(segments.length === 0) return location.origin + '/';
+          return location.origin + '/' + segments[0] + '/';
         }catch(e){
           return '/';
         }
