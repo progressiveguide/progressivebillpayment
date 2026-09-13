@@ -39,8 +39,8 @@
       <p class="lead">This website is an independent informational guide and is not affiliated with Progressive. Return to the homepage to continue browsing the guide.</p>
 
       <div class="actions">
-        <a id="homeBtn" class="btn" href="/progressivebillpayment/">Go to Homepage</a>
-        <a id="sitemapBtn" class="btn ghost" href="/progressivebillpayment/sitemap.xml">View sitemap</a>
+        <a id="homeBtn" class="btn" href="./">Go to Homepage</a>
+        <a id="sitemapBtn" class="btn ghost" href="./sitemap.xml">View sitemap</a>
       </div>
 
       <div class="fallback" id="fallback"><span class="spinner" aria-hidden="true"></span>Use the homepage link above to return to the guide.</div>
@@ -48,5 +48,22 @@
     </div>
   </div>
 
+  <script>
+    (function(){
+      function computeHome(){
+        try{
+          var segments = location.pathname.split('/').filter(function(segment){ return segment.length > 0; });
+          if(segments.length === 0) return '/';
+          return '/' + segments[0] + '/';
+        }catch(e){
+          return '/';
+        }
+      }
+
+      var home = computeHome();
+      document.getElementById('homeBtn').setAttribute('href', home);
+      document.getElementById('sitemapBtn').setAttribute('href', home + 'sitemap.xml');
+    })();
+  </script>
 </body>
 </html>
