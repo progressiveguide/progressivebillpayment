@@ -25,9 +25,28 @@
   <meta name="twitter:image" content="https://progressiveguide.github.io/progressivebillpayment/og-image.jpg">
   <script>
     (function () {
-      if (window.location.search && window.location.search.length > 1 && window.history && window.history.replaceState) {
-        window.history.replaceState(null, document.title, window.location.pathname + window.location.hash);
+      if (!window.location.search || window.location.search.length <= 1 || !window.history || !window.history.replaceState) {
+        return;
       }
+
+      var params = new URLSearchParams(window.location.search);
+      var trackingParams = ['gclid', 'fbclid', 'msclkid'];
+      var changed = false;
+
+      Array.from(params.keys()).forEach(function (key) {
+        if (key.indexOf('utm_') === 0 || trackingParams.indexOf(key) !== -1) {
+          params.delete(key);
+          changed = true;
+        }
+      });
+
+      if (!changed) {
+        return;
+      }
+
+      var query = params.toString();
+      var normalizedUrl = window.location.pathname + (query ? '?' + query : '') + window.location.hash;
+      window.history.replaceState(null, document.title, normalizedUrl);
     })();
   </script>
   <link rel="canonical" href="https://progressiveguide.github.io/progressivebillpayment/">
