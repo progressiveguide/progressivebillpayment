@@ -1,5 +1,8 @@
 User-agent: *
 Allow: /
-Disallow: /*?*
+Disallow: /*?utm_*
+Disallow: /*?gclid=*
+Disallow: /*?fbclid=*
+Disallow: /*?msclkid=*
 
 Sitemap: https://progressiveguide.github.io/progressivebillpayment/sitemap.xml

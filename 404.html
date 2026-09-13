@@ -50,43 +50,15 @@
 
   <script>
     (function(){
-      function candidateRoots(pathname) {
-        var segments = pathname.split('/').filter(function(segment){ return segment.length > 0; });
-        var roots = ['/'];
+      var segments = window.location.pathname.split('/').filter(function(segment){ return segment.length > 0; });
+      var home = '/';
 
-        for (var i = 1; i <= segments.length; i += 1) {
-          roots.push('/' + segments.slice(0, i).join('/') + '/');
-        }
-
-        return roots.reverse();
+      if (segments.length > 0) {
+        home = '/' + segments[0] + '/';
       }
 
-      function applyHome(home) {
-        document.getElementById('homeBtn').setAttribute('href', home);
-        document.getElementById('sitemapBtn').setAttribute('href', home + 'sitemap.xml');
-      }
-
-      var roots = candidateRoots(window.location.pathname);
-
-      (function tryRoot(index) {
-        if (index >= roots.length) {
-          applyHome('/');
-          return;
-        }
-
-        var home = roots[index];
-        fetch(home + '.nojekyll', { cache: 'no-store' })
-          .then(function(response) {
-            if (response.ok) {
-              applyHome(home);
-            } else {
-              tryRoot(index + 1);
-            }
-          })
-          .catch(function() {
-            tryRoot(index + 1);
-          });
-      })(0);
+      document.getElementById('homeBtn').setAttribute('href', home);
+      document.getElementById('sitemapBtn').setAttribute('href', home + 'sitemap.xml');
     })();
   </script>
 </body>
