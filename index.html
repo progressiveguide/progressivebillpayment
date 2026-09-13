@@ -29,31 +29,7 @@
         return;
       }
 
-      var params = new URLSearchParams(window.location.search);
-      var normalizedParams = new URLSearchParams();
-      var trackingParams = ['gclid', 'fbclid', 'msclkid'];
-      var changed = false;
-
-      Array.from(params.entries()).forEach(function (entry) {
-        var key = entry[0];
-        var value = entry[1];
-        var normalizedKey = key.toLowerCase();
-
-        if (normalizedKey.indexOf('utm_') === 0 || trackingParams.indexOf(normalizedKey) !== -1) {
-          changed = true;
-          return;
-        }
-
-        normalizedParams.append(key, value);
-      });
-
-      if (!changed) {
-        return;
-      }
-
-      var query = normalizedParams.toString();
-      var normalizedUrl = window.location.pathname + (query ? '?' + query : '') + window.location.hash;
-      window.history.replaceState(null, document.title, normalizedUrl);
+      window.history.replaceState(null, document.title, window.location.pathname + window.location.hash);
     })();
   </script>
   <link rel="canonical" href="https://progressiveguide.github.io/progressivebillpayment/">
