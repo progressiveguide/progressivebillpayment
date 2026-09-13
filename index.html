@@ -32,14 +32,19 @@
       var params = new URLSearchParams(window.location.search);
       var trackingParams = ['gclid', 'fbclid', 'msclkid'];
       var changed = false;
+      var keysToRemove = [];
 
       Array.from(params.keys()).forEach(function (key) {
         var normalizedKey = key.toLowerCase();
 
         if (normalizedKey.indexOf('utm_') === 0 || trackingParams.indexOf(normalizedKey) !== -1) {
-          params.delete(key);
-          changed = true;
+          keysToRemove.push(key);
         }
+      });
+
+      keysToRemove.forEach(function (key) {
+        params.delete(key);
+        changed = true;
       });
 
       if (!changed) {
@@ -1225,7 +1230,7 @@
   "isPartOf": {
     "@type": "WebSite",
     "name": "progressiveguide",
-    "url": "https://progressiveguide.github.io/progressivebillpayment/"
+    "url": "https://progressiveguide.github.io/"
   }
 }
 </script>
