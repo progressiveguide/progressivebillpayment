@@ -75,7 +75,7 @@
         }
 
         var home = roots[index];
-        fetch(home + 'site.webmanifest', { method: 'HEAD' })
+        fetch(home + '.nojekyll', { cache: 'no-store' })
           .then(function(response) {
             if (response.ok) {
               applyHome(home);
