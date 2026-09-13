@@ -34,7 +34,9 @@
       var changed = false;
 
       Array.from(params.keys()).forEach(function (key) {
-        if (key.indexOf('utm_') === 0 || trackingParams.indexOf(key) !== -1) {
+        var normalizedKey = key.toLowerCase();
+
+        if (normalizedKey.indexOf('utm_') === 0 || trackingParams.indexOf(normalizedKey) !== -1) {
           params.delete(key);
           changed = true;
         }
