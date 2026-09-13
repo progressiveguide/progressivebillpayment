@@ -52,15 +52,10 @@
     (function(){
       function computeHome(){
         try{
-          var segments = location.pathname.split('/').filter(function(segment){ return segment.length > 0; });
           var projectSegment = 'progressivebillpayment';
-          if(segments.length === 0) return location.origin + '/';
-          if(segments[0] === projectSegment) {
-            return location.origin + '/' + projectSegment + '/';
-          }
-          return location.origin + '/';
+          return location.origin + '/' + projectSegment + '/';
         }catch(e){
-          return location.origin + '/';
+          return '/progressivebillpayment/';
         }
       }
 
