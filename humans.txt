@@ -1,5 +1,5 @@
 /* TEAM */
-Publisher: Progressive Guide
+Publisher: billinfo-desk
 Role: Informational Publisher
 
 /* SITE */
@@ -8,4 +8,4 @@ Hosting: GitHub Pages
 Region: Global
 
 /* LAST UPDATED */
-September 2026
+September 24, 2026
